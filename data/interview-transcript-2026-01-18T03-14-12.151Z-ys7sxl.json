@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "metadata": {
+    "generatedAt": "2026-01-18T03:14:12.151Z",
+    "startedAt": "2026-01-18T03:14:09.701Z",
+    "endedAt": "2026-01-18T03:14:09.701Z",
+    "messageCount": 1,
+    "source": "livekit-session"
+  },
+  "participants": {
+    "agent": {
+      "identity": "agent-AJ_8thWMPJWB3nv"
+    }
+  },
+  "turns": [
+    {
+      "role": "agent",
+      "text": "Hello! I’m AdmitX Interviewer. I’ll be conducting a short mock college interview",
+      "timestamp": "2026-01-18T03:14:09.701Z",
+      "type": "agentTranscript"
+    }
+  ]
+}

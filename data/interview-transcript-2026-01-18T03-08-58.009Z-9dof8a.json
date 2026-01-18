@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "metadata": {
+    "generatedAt": "2026-01-18T03:08:58.009Z",
+    "startedAt": "2026-01-18T03:08:26.884Z",
+    "endedAt": "2026-01-18T03:08:57.657Z",
+    "messageCount": 10,
+    "source": "livekit-session"
+  },
+  "transcript": {
+    "text": "Agent: Hello!\nUser: Hello\nAgent: Hi there! Are you ready to begin your college interview?\nUser: Yes.\nAgent: Great! To start, please tell me about yourself.\nUser: My name is aj and I go to osha I don't go to college I want to go to college.\nAgent: Thanks for sharing, AJ. Why do you want to study your intended major in college?\nUser: Because I want to make a lot of money.\nAgent: I understand that can be important. Can you tell me\nUser: Okay.",
+    "messages": [
+      {
+        "id": "7049efaa-3b65-4afb-ad51-c8157d1c4ee5",
+        "type": "agentTranscript",
+        "role": "agent",
+        "timestamp": 1768705706884,
+        "timestampIso": "2026-01-18T03:08:26.884Z",
+        "name": "",
+        "identity": "agent-AJ_dSzKa7MW7L2x",
+        "text": "Hello!"
+      },
+      {
+        "id": "4b76bd24-e22a-4193-b749-baec0dbcbbd3",
+        "type": "userTranscript",
+        "role": "user",
+        "timestamp": 1768705707715,
+        "timestampIso": "2026-01-18T03:08:27.715Z",
+        "name": "user",
+        "identity": "voice_assistant_user_1467",
+        "text": "Hello"
+      },
+      {
+        "id": "d88c1697-513c-49d0-a3ee-51be2fbf4bbc",
+        "type": "agentTranscript",
+        "role": "agent",
+        "timestamp": 1768705708655,
+        "timestampIso": "2026-01-18T03:08:28.655Z",
+        "name": "",
+        "identity": "agent-AJ_dSzKa7MW7L2x",
+        "text": "Hi there! Are you ready to begin your college interview?"
+      },
+      {
+        "id": "3d64f055-7ae2-4bdd-bebc-be42d3bbec4a",
+        "type": "userTranscript",
+        "role": "user",
+        "timestamp": 1768705713752,
+        "timestampIso": "2026-01-18T03:08:33.752Z",
+        "name": "user",
+        "identity": "voice_assistant_user_1467",
+        "text": "Yes."
+      },
+      {
+        "id": "f80cf4fe-8f22-40c0-a076-527dd981b228",
+        "type": "agentTranscript",
+        "role": "agent",
+        "timestamp": 1768705714601,
+        "timestampIso": "2026-01-18T03:08:34.601Z",
+        "name": "",
+        "identity": "agent-AJ_dSzKa7MW7L2x",
+        "text": "Great! To start, please tell me about yourself."
+      },
+      {
+        "id": "5f4f8004-7ce7-4f47-a8a1-5fe8cdb118cd",
+        "type": "userTranscript",
+        "role": "user",
+        "timestamp": 1768705719636,
+        "timestampIso": "2026-01-18T03:08:39.636Z",
+        "name": "user",
+        "identity": "voice_assistant_user_1467",
+        "text": "My name is aj and I go to osha I don't go to college I want to go to college."
+      },
+      {
+        "id": "f8b3b57a-13a0-4853-8837-c5e11f3de7a0",
+        "type": "agentTranscript",
+        "role": "agent",
+        "timestamp": 1768705726656,
+        "timestampIso": "2026-01-18T03:08:46.656Z",
+        "name": "",
+        "identity": "agent-AJ_dSzKa7MW7L2x",
+        "text": "Thanks for sharing, AJ. Why do you want to study your intended major in college?"
+      },
+      {
+        "id": "f7ce9b5e-1b28-46fb-ab22-56e1b35d33e7",
+        "type": "userTranscript",
+        "role": "user",
+        "timestamp": 1768705733255,
+        "timestampIso": "2026-01-18T03:08:53.255Z",
+        "name": "user",
+        "identity": "voice_assistant_user_1467",
+        "text": "Because I want to make a lot of money."
+      },
+      {
+        "id": "3c365eaa-3874-44cc-ac02-61ab8d8db426",
+        "type": "agentTranscript",
+        "role": "agent",
+        "timestamp": 1768705734747,
+        "timestampIso": "2026-01-18T03:08:54.747Z",
+        "name": "",
+        "identity": "agent-AJ_dSzKa7MW7L2x",
+        "text": "I understand that can be important. Can you tell me"
+      },
+      {
+        "id": "f4596373-9777-4d4d-a892-10a7b4537481",
+        "type": "userTranscript",
+        "role": "user",
+        "timestamp": 1768705737657,
+        "timestampIso": "2026-01-18T03:08:57.657Z",
+        "name": "user",
+        "identity": "voice_assistant_user_1467",
+        "text": "Okay."
+      }
+    ]
+  }
+}

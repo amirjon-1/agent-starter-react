@@ -1,0 +1,105 @@
+{
+  "version": 2,
+  "metadata": {
+    "generatedAt": "2026-01-18T03:14:07.652Z",
+    "startedAt": "2026-01-18T03:13:29.102Z",
+    "endedAt": "2026-01-18T03:14:07.569Z",
+    "messageCount": 14,
+    "source": "livekit-session"
+  },
+  "participants": {
+    "agent": {
+      "identity": "agent-AJ_et72RTxbtQwp"
+    },
+    "user": {
+      "name": "user",
+      "identity": "voice_assistant_user_1815"
+    }
+  },
+  "turns": [
+    {
+      "role": "agent",
+      "text": "Hi! I’m AdmitX Interviewer. Ready to do a quick college interview practice? Just let me know when you'd like to start.",
+      "timestamp": "2026-01-18T03:13:29.102Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Yes.",
+      "timestamp": "2026-01-18T03:13:35.072Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Great! Let’s begin. Tell me about yourself.",
+      "timestamp": "2026-01-18T03:13:35.816Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "I come john and",
+      "timestamp": "2026-01-18T03:13:42.943Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Look",
+      "timestamp": "2026-01-18T03:13:46.435Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Wait",
+      "timestamp": "2026-01-18T03:13:46.837Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Yeah there is a video.",
+      "timestamp": "2026-01-18T03:13:47.826Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Thanks",
+      "timestamp": "2026-01-18T03:13:48.229Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Thanks for sharing. Could you tell me a bit more about yourself—like your",
+      "timestamp": "2026-01-18T03:13:49.726Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "So I am from uzbekistan",
+      "timestamp": "2026-01-18T03:13:59.066Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "user",
+      "text": "I live in philly now",
+      "timestamp": "2026-01-18T03:14:01.511Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Thanks for sharing where you're",
+      "timestamp": "2026-01-18T03:14:04.760Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Videos",
+      "timestamp": "2026-01-18T03:14:06.716Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "I’m",
+      "timestamp": "2026-01-18T03:14:07.569Z",
+      "type": "agentTranscript"
+    }
+  ]
+}

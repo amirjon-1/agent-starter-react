@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { useSessionContext, useSessionMessages } from '@livekit/components-react';
+import { useSessionContext, type ReceivedMessage } from '@livekit/components-react';
 import type { AppConfig } from '@/app-config';
 import { ChatTranscript } from '@/components/app/chat-transcript';
 import { PreConnectMessage } from '@/components/app/preconnect-message';
@@ -58,14 +58,15 @@ export function Fade({ top = false, bottom = false, className }: FadeProps) {
 
 interface SessionViewProps {
   appConfig: AppConfig;
+  messages: ReceivedMessage[];
 }
 
 export const SessionView = ({
   appConfig,
+  messages,
   ...props
 }: React.ComponentProps<'section'> & SessionViewProps) => {
   const session = useSessionContext();
-  const { messages } = useSessionMessages(session);
   const [chatOpen, setChatOpen] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
