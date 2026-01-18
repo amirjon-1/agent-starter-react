@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "metadata": {
+    "generatedAt": "2026-01-18T05:58:06.145Z",
+    "startedAt": "2026-01-18T05:57:59.353Z",
+    "endedAt": "2026-01-18T05:58:04.050Z",
+    "messageCount": 3,
+    "source": "livekit-session"
+  },
+  "participants": {
+    "agent": {
+      "identity": "agent-AJ_vV7zknps3Uec"
+    },
+    "user": {
+      "name": "user",
+      "identity": "voice_assistant_user_7942"
+    }
+  },
+  "turns": [
+    {
+      "role": "agent",
+      "text": "Hello! I’m AdmitX Interviewer. I’m here to help you practice your college interview.",
+      "timestamp": "2026-01-18T05:57:59.353Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "What's up.",
+      "timestamp": "2026-01-18T05:58:03.236Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Hi! I’m glad you’re here. Are you ready to get",
+      "timestamp": "2026-01-18T05:58:04.050Z",
+      "type": "agentTranscript"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 2,
+  "metadata": {
+    "generatedAt": "2026-01-18T05:59:42.314Z",
+    "startedAt": "2026-01-18T05:59:24.701Z",
+    "endedAt": "2026-01-18T05:59:37.630Z",
+    "messageCount": 5,
+    "source": "livekit-session"
+  },
+  "participants": {
+    "agent": {
+      "identity": "agent-AJ_2WJGqum84UKZ"
+    },
+    "user": {
+      "name": "user",
+      "identity": "voice_assistant_user_6880"
+    }
+  },
+  "turns": [
+    {
+      "role": "agent",
+      "text": "Hi! I’m AdmitX Interviewer. I’ll be helping you practice your college interview",
+      "timestamp": "2026-01-18T05:59:24.701Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "Hey hello.",
+      "timestamp": "2026-01-18T05:59:28.558Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "Hello! I’m glad to meet you. Are you ready to get started with the interview?",
+      "timestamp": "2026-01-18T05:59:29.709Z",
+      "type": "agentTranscript"
+    },
+    {
+      "role": "user",
+      "text": "I want to buy a new phone.",
+      "timestamp": "2026-01-18T05:59:35.957Z",
+      "type": "userTranscript"
+    },
+    {
+      "role": "agent",
+      "text": "That sounds interesting, but let’s focus on the interview now. To start, can you tell me about yourself?",
+      "timestamp": "2026-01-18T05:59:37.630Z",
+      "type": "agentTranscript"
+    }
+  ]
+}

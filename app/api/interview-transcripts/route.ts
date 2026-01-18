@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { createServerClient, getSupabaseAdmin } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
+const STORAGE_BUCKET = process.env.SUPABASE_TRANSCRIPTS_BUCKET || 'interview-transcripts';
 
 function sanitizeFilename(value: string): string {
   return value
@@ -71,6 +73,8 @@ export async function POST(req: Request) {
       // Continue to save to file system as fallback
     }
 
+    const payloadJson = `${JSON.stringify(body, null, 2)}\n`;
+
     // Also save to file system as backup
     const generatedAt =
       typeof metadata?.generatedAt === 'string' ? metadata.generatedAt : new Date().toISOString();
@@ -79,11 +83,24 @@ export async function POST(req: Request) {
     const fileName = `interview-transcript-${safeTimestamp}-${uniqueSuffix}.json`;
 
     await fs.mkdir(DATA_DIR, { recursive: true });
-    await fs.writeFile(
-      path.join(DATA_DIR, fileName),
-      `${JSON.stringify(body, null, 2)}\n`,
-      'utf8'
-    );
+    await fs.writeFile(path.join(DATA_DIR, fileName), payloadJson, 'utf8');
+
+    try {
+      const supabaseAdmin = getSupabaseAdmin();
+      const storagePath = `${userId}/${fileName}`;
+      const { error: storageError } = await supabaseAdmin.storage
+        .from(STORAGE_BUCKET)
+        .upload(storagePath, Buffer.from(payloadJson), {
+          contentType: 'application/json',
+          upsert: false,
+        });
+
+      if (storageError) {
+        console.error('Failed to upload transcript to Supabase storage:', storageError);
+      }
+    } catch (storageError) {
+      console.error('Failed to upload transcript to Supabase storage:', storageError);
+    }
 
     return NextResponse.json({
       ok: true,

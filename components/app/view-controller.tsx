@@ -135,24 +135,6 @@ function buildTranscriptExport(messages: ReceivedMessage[]): TranscriptExport {
   };
 }
 
-function buildTranscriptFilename(isoTimestamp: string): string {
-  const safeTimestamp = isoTimestamp.replace(/[:.]/g, '-');
-  return `interview-transcript-${safeTimestamp}.json`;
-}
-
-function downloadJsonFile(filename: string, data: TranscriptExport): void {
-  const json = JSON.stringify(data, null, 2);
-  const blob = new Blob([json], { type: 'application/json;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
 interface ViewControllerProps {
   appConfig: AppConfig;
 }
@@ -176,9 +158,7 @@ export function ViewController({ appConfig }: ViewControllerProps) {
         throw new Error(`Failed to save transcript: ${response.status}`);
       }
     } catch (error) {
-      console.error('Failed to save transcript to server, downloading fallback.', error);
-      const filename = buildTranscriptFilename(payload.metadata.generatedAt);
-      downloadJsonFile(filename, payload);
+      console.error('Failed to save transcript to server.', error);
     }
   }, []);
 
