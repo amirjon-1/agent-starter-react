@@ -1,6 +1,16 @@
 # Agent Starter for React
 
+> **Note:** This project is a fork of the [LiveKit Agent Starter for React](https://github.com/livekit-examples/agent-starter-react) template. We've extended it with authentication and database integration features.
+
 This is a starter template for [LiveKit Agents](https://docs.livekit.io/agents) that provides a simple voice interface using the [LiveKit JavaScript SDK](https://github.com/livekit/client-sdk-js). It supports [voice](https://docs.livekit.io/agents/start/voice-ai), [transcriptions](https://docs.livekit.io/agents/build/text/), and [virtual avatars](https://docs.livekit.io/agents/integrations/avatar).
+
+## Modifications
+
+This fork includes the following enhancements:
+
+- **Google OAuth Authentication**: Users must sign in with Google before starting a conversation with the agent
+- **Database Integration**: Interview transcripts are automatically saved to a Supabase PostgreSQL database
+- **Transcript Parsing**: Full conversation data is stored in JSONB format for easy querying and analysis
 
 Also available for:
 [Android](https://github.com/livekit-examples/agent-starter-android) • [Flutter](https://github.com/livekit-examples/agent-starter-flutter) • [Swift](https://github.com/livekit-examples/agent-starter-swift) • [React Native](https://github.com/livekit-examples/agent-starter-react-native)
@@ -14,6 +24,8 @@ Also available for:
 ### Features:
 
 - Real-time voice interaction with LiveKit Agents
+- Google OAuth authentication via Supabase
+- Automatic transcript saving to PostgreSQL database
 - Camera video streaming support
 - Screen sharing capabilities
 - Audio visualization and level monitoring
@@ -109,9 +121,10 @@ You can update these values in [`app-config.ts`](./app-config.ts) to customize b
 
 #### Environment Variables
 
-You'll also need to configure your LiveKit credentials in `.env.local` (copy `.env.example` if you don't have one):
+You'll need to configure your credentials in `.env` (or `.env.local`):
 
 ```env
+# LiveKit Configuration
 LIVEKIT_API_KEY=your_livekit_api_key
 LIVEKIT_API_SECRET=your_livekit_api_secret
 LIVEKIT_URL=https://your-livekit-server-url
@@ -120,9 +133,95 @@ LIVEKIT_URL=https://your-livekit-server-url
 # Leave AGENT_NAME blank to enable automatic dispatch
 # Provide an agent name to enable explicit dispatch
 AGENT_NAME=
+
+# Supabase Configuration (for authentication and database)
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ```
 
-These are required for the voice agent functionality to work with your LiveKit project.
+These are required for the voice agent functionality and authentication to work.
+
+## Authentication & Database
+
+### Google OAuth Setup
+
+This application uses Supabase for Google OAuth authentication. Before users can start a conversation with the agent, they must sign in with their Google account.
+
+**Supabase Configuration:**
+
+1. Go to your Supabase project dashboard
+2. Navigate to **Authentication** → **Providers**
+3. Enable **Google** provider and configure your Google OAuth credentials
+4. In **Authentication** → **URL Configuration**:
+   - Set **Site URL** to your application's domain (e.g., `https://your-app.vercel.app` or `http://localhost:3000` for local dev)
+   - Add **Redirect URLs**:
+     - `http://localhost:3000/auth/callback` (for local development)
+     - `https://your-production-domain.com/auth/callback` (for production)
+
+### Database Schema
+
+Interview transcripts are automatically saved to a PostgreSQL database table. The application expects the following table structure:
+
+```sql
+create table public.voice_interviews (
+  id uuid not null default extensions.uuid_generate_v4 (),
+  user_id uuid not null,
+  audio_url text null,
+  transcript text null,
+  duration_seconds integer null default 0,
+  story_threads jsonb null default '[]'::jsonb,
+  created_at timestamp with time zone null default now(),
+  constraint voice_interviews_pkey primary key (id),
+  constraint voice_interviews_user_id_fkey foreign KEY (user_id) references users (id) on delete CASCADE
+) TABLESPACE pg_default;
+```
+
+**Transcript Storage:**
+
+- `transcript`: Plain text format of the conversation (formatted from turns)
+- `story_threads`: Full JSON data stored as JSONB, containing:
+  - Complete conversation metadata (start time, end time, message count)
+  - Participant information
+  - All conversation turns with timestamps and roles
+  - This allows for rich querying and analysis of interview data
+
+**Uploading Existing Transcripts:**
+
+If you have existing transcript JSON files in the `data/` folder, you can upload them to the database using:
+
+```bash
+pnpm upload-transcripts <user_id>
+```
+
+This script will:
+- Validate that the user exists in the database
+- Parse all JSON files from the `data/` folder
+- Calculate duration and format transcript text
+- Insert records into the `voice_interviews` table
+
+## Credits & Acknowledgments
+
+This project is built on top of excellent open-source tools and libraries:
+
+- **[LiveKit](https://livekit.io/)** - Real-time communication infrastructure for voice and video agents
+- **[Next.js](https://nextjs.org/)** - React framework for production
+- **[Supabase](https://supabase.com/)** - Open-source Firebase alternative providing authentication and PostgreSQL database
+- **[React](https://react.dev/)** - UI library
+- **[TypeScript](https://www.typescriptlang.org/)** - Typed JavaScript
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[@supabase/ssr](https://github.com/supabase/ssr)** - Supabase server-side rendering utilities
+- **[@livekit/components-react](https://github.com/livekit/components-react)** - React components for LiveKit
+
+### Original Template
+
+This project is a fork of the [LiveKit Agent Starter for React](https://github.com/livekit-examples/agent-starter-react) template. We've extended it with:
+
+- Google OAuth authentication via Supabase
+- Automatic transcript saving to PostgreSQL
+- Database integration for interview data analysis
+
+Special thanks to the LiveKit team for creating the original template and providing excellent documentation.
 
 ## Contributing
 
