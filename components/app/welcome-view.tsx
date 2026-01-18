@@ -122,9 +122,7 @@ export const WelcomeView = ({
             : 'Sign in with Google to start your interview'}
         </p>
 
-        {user && (
-          <p className="text-muted-foreground mt-2 text-sm">Signed in as {user.email}</p>
-        )}
+        {user && <p className="text-muted-foreground mt-2 text-sm">Signed in as {user.email}</p>}
 
         <Button
           variant="primary"
@@ -136,12 +134,7 @@ export const WelcomeView = ({
         </Button>
 
         {user && (
-          <Button
-            variant="secondary"
-            size="sm"
-            onClick={handleSignOut}
-            className="mt-4 text-sm"
-          >
+          <Button variant="secondary" size="sm" onClick={handleSignOut} className="mt-4 text-sm">
             Sign out
           </Button>
         )}

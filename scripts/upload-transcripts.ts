@@ -1,6 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
-import { readdir, readFile } from 'fs/promises';
+import { readFile, readdir } from 'fs/promises';
 import { join } from 'path';
+import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -122,4 +122,3 @@ async function main() {
 }
 
 main().catch(console.error);
-

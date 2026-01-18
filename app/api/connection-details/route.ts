@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import { AccessToken, type AccessTokenOptions, type VideoGrant } from 'livekit-server-sdk';
 import { RoomConfiguration } from '@livekit/protocol';
-import { createServerClient } from '@/lib/supabase';
-import { cookies } from 'next/headers';
 
 type ConnectionDetails = {
   serverUrl: string;
