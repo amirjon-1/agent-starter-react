@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { User } from '@supabase/supabase-js';
 import { Button } from '@/components/livekit/button';
 import { supabase } from '@/lib/supabase';
-import type { User } from '@supabase/supabase-js';
 
 function WelcomeImage() {
   return (
@@ -57,12 +57,12 @@ export const WelcomeView = ({
     // Use just the base callback URL - Supabase will add query params
     // The base URL must be in Supabase's Redirect URLs allow list
     const redirectTo = `${window.location.origin}/auth/callback`;
-    
+
     console.log('=== OAuth Sign In Debug ===');
     console.log('Current origin:', window.location.origin);
     console.log('Redirect URL being sent:', redirectTo);
     console.log('Full current URL:', window.location.href);
-    
+
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
@@ -73,10 +73,12 @@ export const WelcomeView = ({
         },
       },
     });
-    
+
     if (error) {
       console.error('OAuth Error:', error);
-      alert(`Sign in error: ${error.message}\n\nPlease check:\n1. ${redirectTo} is in Supabase Redirect URLs\n2. Site URL in Supabase matches this app's domain`);
+      alert(
+        `Sign in error: ${error.message}\n\nPlease check:\n1. ${redirectTo} is in Supabase Redirect URLs\n2. Site URL in Supabase matches this app's domain`
+      );
     } else if (data?.url) {
       console.log('Supabase returned OAuth URL:', data.url);
       console.log('This URL should redirect to Google, then back to:', redirectTo);
@@ -103,9 +105,7 @@ export const WelcomeView = ({
       <div ref={ref}>
         <section className="bg-background flex flex-col items-center justify-center text-center">
           <WelcomeImage />
-          <p className="text-foreground max-w-prose pt-1 leading-6 font-medium">
-            Loading...
-          </p>
+          <p className="text-foreground max-w-prose pt-1 leading-6 font-medium">Loading...</p>
         </section>
       </div>
     );
@@ -123,9 +123,7 @@ export const WelcomeView = ({
         </p>
 
         {user && (
-          <p className="text-muted-foreground text-sm mt-2">
-            Signed in as {user.email}
-          </p>
+          <p className="text-muted-foreground mt-2 text-sm">Signed in as {user.email}</p>
         )}
 
         <Button
